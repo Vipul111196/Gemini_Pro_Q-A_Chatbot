@@ -36,3 +36,33 @@ To run this project locally, follow these steps:
       ```
       GOOGLE_API_KEY=your-google-api-key
       ```
+
+5. **Run the application**:
+    ```bash
+    streamlit run app.py
+    ```
+
+## Usage
+
+1. Open the Streamlit application in your browser.
+2. Enter your question in the text input field.
+3. Click on the "Ask the question" button to send your query.
+4. The response from the Gemini model will be displayed in real-time.
+5. Previous interactions can be viewed in the chat history section.
+
+## Project Structure
+
+- `app.py`: The main script that runs the Streamlit application.
+- `requirements.txt`: A list of Python dependencies required to run the application.
+- `.env`: A file to store environment variables (not included in the repository for security reasons).
+
+## Requirements
+
+- Python 3.8 or higher
+- Streamlit
+- Python-dotenv
+- Google's Generative AI Python Client Library
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue if you have suggestions for improvements.
