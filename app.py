@@ -25,16 +25,30 @@ st.set_page_config(page_title="Gemini Q&A Chatbot", page_icon="🤖", layout="ce
 
 st.header("Gemini Q&A Chatbot")
 
-# Input section
-input = st.text_input("Input:", key="input", placeholder="Enter your question here")
-submit = st.button("Ask the question")
+# Initialize our streamlit app
+st.set_page_config(page_title="Gemini Q&A Chatbot", page_icon=":robot:")
 
-# Processing the response when the submit button is clicked
+st.header("Gemini Q&A Chatbot")
+
+# Initialize session state for chat history if it doesn't exist
+if 'chat_history' not in st.session_state:
+    st.session_state['chat_history'] = []
+
+input=st.text_input("Input: ",key="input")
+submit=st.button("Ask the question")
+
 if submit and input:
-    response = get_gemini_response(input)
+    response=get_gemini_response(input)
+    # Add user query and response to session state chat history
+    st.session_state['chat_history'].append(("You", input))
     st.subheader("The Response is")
     for chunk in response:
         st.write(chunk.text)
+        st.session_state['chat_history'].append(("Bot", chunk.text))
+st.subheader("The Chat History is")
+    
+for role, text in st.session_state['chat_history']:
+    st.write(f"{role}: {text}")
     
 
 
